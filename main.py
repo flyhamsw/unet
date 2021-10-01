@@ -11,13 +11,12 @@ data_gen_args = dict(rotation_range=0.2,
                     zoom_range=0.05,
                     horizontal_flip=True,
                     fill_mode='nearest')
-myGene = trainGenerator(2,'data/BigEye_v1/train','image','label',data_gen_args,save_to_dir = None)
+myGene = trainGenerator(2,'data/BigEye_v1/','image','label',data_gen_args,save_to_dir = None)
 
 model = unet()
-model_checkpoint = ModelCheckpoint('unet_membrane.hdf5', monitor='loss',verbose=1, save_best_only=True)
-model.fit_generator(myGene,steps_per_epoch=1080,epochs=10,callbacks=[model_checkpoint])
+# model_checkpoint = ModelCheckpoint('unet_membrane.hdf5', monitor='loss',verbose=1, save_best_only=True)
+model.fit_generator(myGene, steps_per_epoch=1080, epochs=10)
 
-testGene = testGenerator("data/BigEye_v1/test")
-results = model.predict_generator(testGene,40,verbose=1)
-saveResult("data/BigEye_v1/test",results)
-
+# testGene = testGenerator("data/BigEye_v1/test")
+# results = model.predict_generator(testGene,40,verbose=1)
+# saveResult("data/BigEye_v1/test",results)

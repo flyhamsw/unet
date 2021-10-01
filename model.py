@@ -4,11 +4,11 @@ import skimage.io as io
 import skimage.transform as trans
 import numpy as np
 import tensorflow as tf
-from keras.models import *
-from keras.layers import *
-from keras.optimizers import *
-from keras.callbacks import ModelCheckpoint, LearningRateScheduler
-from keras import backend as keras
+from tensorflow.keras.models import *
+from tensorflow.keras.layers import *
+from tensorflow.keras.optimizers import *
+from tensorflow.keras.callbacks import ModelCheckpoint, LearningRateScheduler
+from tensorflow.keras import backend as keras
 
 
 
@@ -80,7 +80,7 @@ def unet(pretrained_weights = None,input_size = (512,512,1)):
     model = Model(inputs = inputs, outputs = conv10)
 
     # model.compile(optimizer = tf.keras.optimizers.Adam(lr = 1e-4), loss = 'binary_crossentropy', metrics = ['accuracy'])
-    model.compile(optimizer = tf.keras.optimizers.Adam(lr = 1e-4), loss = 'binary_crossentropy', metrics=tf.keras.metrics.MeanIoU(num_classes=2)) #바이너리 쓰는게 맞음
+    model.compile(optimizer = Adam(lr = 1e-4), loss = 'binary_crossentropy', metrics=tf.keras.metrics.MeanIoU(num_classes=2)) #바이너리 쓰는게 맞음
     # model.compile(optimizer=tf.keras.optimizers.Adam(lr=1e-4), loss='sparse_categorical_crossentropy', metrics=tf.keras.metrics.MeanIoU(num_classes=2)) #마지막 차원을 2로 바꿔야 함
     # model.compile(optimizer=tf.keras.optimizers.Adam(lr=1e-4), loss=MyLoss(name='loss'), metrics=tf.keras.metrics.MeanIoU(num_classes=2))
     # model.compile(optimizer=tf.keras.optimizers.Adam(lr=1e-4), loss='sparse_categorical_crossentropy', metrics=tf.keras.metrics.Precision(thresholds=None, top_k=None, class_id=None, name=None, dtype=None))
