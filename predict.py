@@ -10,7 +10,7 @@ from model import *
 from data import *
 
 model = unet()
-model.load_weights('unet_bn_kaggle_crack.hdf5')
+model.load_weights('unet_bn_kaggle_crack+BigEye_v1_noboundary_onlycrack.hdf5')
 
 
 def predict_single_image(input_fpath, output_fpath):
@@ -35,5 +35,5 @@ def predict_directory(input_dir, output_dir):
 
 
 if __name__ == '__main__':
-    predict_directory('data/kaggle_crack_segmentation_dataset/test/images', 'predictions/unet_bn_kaggle_crack/kaggle_crack_segmentation')
-    predict_directory('data/BigEye_v1_noboundary_onlycrack/img', 'predictions/unet_bn_kaggle_crack/BigEye_v1_noboundary_onlycrack')
+    # predict_directory('data/kaggle_crack_segmentation_dataset/test/images', 'predictions/unet_bn_kaggle_crack/kaggle_crack_segmentation')
+    predict_directory('data/BigEye_v1_noboundary_onlycrack/img', 'predictions/unet_bn_kaggle_crack+BigEye_v1_noboundary_onlycrack/BigEye_v1_noboundary_onlycrack')
